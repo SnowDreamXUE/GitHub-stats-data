@@ -1,0 +1,64 @@
+name: Generate GitHub Stats
+
+on:
+  schedule:
+    # 每天UTC时间16:20运行 (北京时间00:20)
+    - cron: '20 16 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  generate-stats:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.PUSH_TOKEN }}
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Create package.json
+      run: |
+        cat > package.json << EOF
+        {
+          "name": "github-stats-generator",
+          "version": "1.0.0",
+          "type": "module",
+          "description": "Generate GitHub repository statistics",
+          "main": "generate-stats.js",
+          "scripts": {
+            "start": "node generate-stats.js"
+          },
+          "dependencies": {
+            "@octokit/rest": "^20.0.0"
+          }
+        }
+        EOF
+        
+    - name: Install dependencies
+      run: npm install
+        
+    - name: Generate stats data
+      run: node generate-stats.js
+      env:
+        GITHUB_TOKEN: ${{ secrets.STATS_TOKEN }}  # 用于获取数据的全权限token
+        USERNAME: ${{ github.repository_owner }}
+        
+    - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}   # 用于推送的仓库专用token
+        TZ: Asia/Shanghai  # 设置时区为北京时间
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update GitHub stats data - $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M')"
+          git push
+        fi
