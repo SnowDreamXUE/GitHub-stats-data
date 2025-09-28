@@ -1,0 +1,13 @@
+{
+  "name": "github-stats-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Generate GitHub repository statistics",
+  "main": "generate-stats.js",
+  "scripts": {
+    "start": "node generate-stats.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.0"
+  }
+}
