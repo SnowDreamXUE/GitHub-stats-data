@@ -25,6 +25,7 @@ GitHub-stats-data/
 ├── generate-stats.js              # 主统计脚本
 ├── github-stats.json             # 生成的统计数据
 ├── commit-heatmap.json           # 提交热力图数据
+├── version.json                  # 版本和更新时间信息
 └── README.md                     # 项目文档
 ```
 
@@ -65,6 +66,14 @@ GitHub-stats-data/
   ],
   "total_commits": 580,
   "generated_at": "2025-09-29"
+}
+```
+
+### version.json
+版本和更新时间信息：
+```json
+{
+  "last_updated": "2025-09-29"
 }
 ```
 
@@ -121,6 +130,13 @@ fetch('https://raw.githubusercontent.com/SnowDreamXUE/GitHub-stats-data/main/git
   .then(data => {
     console.log(`总提交数: ${data.stats.total_commits}`);
     console.log(`年度提交: ${data.stats.last_year_commits}`);
+  });
+
+// 获取版本信息示例
+fetch('https://raw.githubusercontent.com/SnowDreamXUE/GitHub-stats-data/main/version.json')
+  .then(response => response.json())
+  .then(version => {
+    console.log(`最后更新: ${version.last_updated}`);
   });
 ```
 
@@ -193,6 +209,18 @@ Error: Not Found
 
 **⭐ 如果这个项目对你有帮助，请给个 Star！**
 
-*最后更新：由 GitHub Actions 自动维护*
+<!-- 动态显示最后更新时间 -->
+<script>
+fetch('https://raw.githubusercontent.com/SnowDreamXUE/GitHub-stats-data/main/version.json')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('last-updated').textContent = `最后更新：${data.last_updated}`;
+  })
+  .catch(() => {
+    document.getElementById('last-updated').textContent = '最后更新：由 GitHub Actions 自动维护';
+  });
+</script>
+
+<p id="last-updated">最后更新：正在加载...</p>
 
 </div>
