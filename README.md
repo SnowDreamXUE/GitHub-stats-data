@@ -25,7 +25,6 @@ GitHub-stats-data/
 ├── generate-stats.js              # 主统计脚本
 ├── github-stats.json             # 生成的统计数据
 ├── commit-heatmap.json           # 提交热力图数据
-├── package.json                  # 项目配置
 └── README.md                     # 项目文档
 ```
 
@@ -70,34 +69,6 @@ GitHub-stats-data/
 ```
 
 ## ⚙️ 快速开始
-
-### 环境要求
-- Node.js >= 18.0.0
-- GitHub Personal Access Token
-
-### 本地运行
-
-1. **克隆仓库**
-```bash
-git clone https://github.com/SnowDreamXUE/GitHub-stats-data.git
-cd GitHub-stats-data
-```
-
-2. **安装依赖**
-```bash
-npm install
-```
-
-3. **设置环境变量**
-```bash
-export GITHUB_TOKEN=your_github_token
-export USERNAME=your_github_username
-```
-
-4. **运行脚本**
-```bash
-node generate-stats.js
-```
 
 ### GitHub Actions 配置
 
