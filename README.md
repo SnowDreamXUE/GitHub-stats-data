@@ -1,4 +1,10 @@
-# GitHub 统计数据生成器
+<div align="center">
+<h1>GitHub 统计数据生成器</h1>
+
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![数据更新时间](https://img.shields.io/badge/dynamic/json?color=blue&label=数据最后更新&query=last_updated&url=https%3A%2F%2Fraw.githubusercontent.com%2FSnowDreamXUE%2FGitHub-stats-data%2Fmain%2Fversion.json)
+
+</div>
 
 一个基于 Node.js 的自动化工具，用于生成和维护个人 GitHub 统计数据，包括提交热力图、代码库统计和活动分析。通过 GitHub Actions 实现每日自动更新。
 
@@ -131,13 +137,6 @@ fetch('https://raw.githubusercontent.com/SnowDreamXUE/GitHub-stats-data/main/git
     console.log(`总提交数: ${data.stats.total_commits}`);
     console.log(`年度提交: ${data.stats.last_year_commits}`);
   });
-
-// 获取版本信息示例
-fetch('https://raw.githubusercontent.com/SnowDreamXUE/GitHub-stats-data/main/version.json')
-  .then(response => response.json())
-  .then(version => {
-    console.log(`最后更新: ${version.last_updated}`);
-  });
 ```
 
 ### 可视化展示
@@ -197,30 +196,10 @@ Error: Not Found
 
 本项目采用 [MIT License](LICENSE) 开源协议。
 
-## 🔗 相关链接
-
-- [GitHub API 文档](https://docs.github.com/en/rest)
-- [Octokit.js](https://github.com/octokit/octokit.js)
-- [GitHub Actions](https://docs.github.com/en/actions)
-
 ---
 
 <div align="center">
 
 **⭐ 如果这个项目对你有帮助，请给个 Star！**
-
-<!-- 动态显示最后更新时间 -->
-<script>
-fetch('https://raw.githubusercontent.com/SnowDreamXUE/GitHub-stats-data/main/version.json')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('last-updated').textContent = `最后更新：${data.last_updated}`;
-  })
-  .catch(() => {
-    document.getElementById('last-updated').textContent = '最后更新：由 GitHub Actions 自动维护';
-  });
-</script>
-
-<p id="last-updated">最后更新：正在加载...</p>
 
 </div>
