@@ -94,6 +94,12 @@ async function generateStats() {
     const heatmapData = generateHeatmapData(commitStats.dailyCommits);
     fs.writeFileSync('commit-heatmap.json', JSON.stringify(heatmapData, null, 2));
     
+    // 生成version文件供README使用
+    const versionData = {
+      last_updated: getBeijingISOString()
+    };
+    fs.writeFileSync('version.json', JSON.stringify(versionData, null, 2));
+
     // console.log(`[${getBeijingTime()}] Stats generated successfully!`);
     // console.log(`Total commits (all time): ${statsData.stats.total_commits}`);
     // console.log(`Last year commits: ${statsData.stats.last_year_commits}`);
