@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.PUSH_TOKEN }}
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -48,6 +50,7 @@ jobs:
         
     - name: Commit and push changes
       env:
+        GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}   # 用于推送的仓库专用token
         TZ: Asia/Shanghai  # 设置时区为北京时间
       run: |
         git config --local user.email "action@github.com"
