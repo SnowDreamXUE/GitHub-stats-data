@@ -1,14 +1,9 @@
 {
   "data": [
     {
-      "date": "2025-07-30",
+      "date": "2025-07-31",
       "count": 0,
       "level": 0
-    },
-    {
-      "date": "2025-07-31",
-      "count": 17,
-      "level": 4
     },
     {
       "date": "2025-08-01",
@@ -1829,8 +1824,13 @@
       "date": "2026-07-30",
       "count": 0,
       "level": 0
+    },
+    {
+      "date": "2026-07-31",
+      "count": 0,
+      "level": 0
     }
   ],
-  "total_commits": 161,
-  "generated_at": "2026-07-31"
+  "total_commits": 144,
+  "generated_at": "2026-08-01"
 }
