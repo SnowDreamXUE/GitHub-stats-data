@@ -1,17 +1,17 @@
 {
   "user": {
     "name": "SnowDream",
-    "public_repos": 29,
+    "public_repos": 28,
     "followers": 4,
-    "following": 5
+    "following": 2
   },
   "stats": {
-    "total_commits": 400,
-    "total_repos": 21,
+    "total_commits": 434,
+    "total_repos": 23,
     "total_stars": 4,
     "total_forks": 2,
-    "last_year_commits": 136
+    "last_year_commits": 170
   },
-  "last_updated": "2026-09-27",
-  "last_updated_beijing": "2026/09/27"
+  "last_updated": "2026-09-28",
+  "last_updated_beijing": "2026/09/28"
 }
